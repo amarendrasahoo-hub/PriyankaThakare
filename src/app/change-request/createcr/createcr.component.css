@@ -1,0 +1,29 @@
+
+mat-form-field{ 
+    width: 150px;
+    margin: 10px;
+    font-size: smaller;
+} 
+mat-label{
+    font-size: smaller;
+}
+.radio-group{
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0;
+}
+.radio-button{
+    margin: 5px;
+    font-size: smaller;
+}
+#child-radio{
+    width: 600px;
+    font-size: smaller;
+}
+.btn{
+    margin: 15px;
+}
+section{
+    margin-top: 10%;
+    margin-bottom: 3%;
+  }

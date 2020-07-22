@@ -1,0 +1,18 @@
+<section>
+  <form #createNote="ngForm" (ngSubmit)="onSubmit(createNote)">
+    <mat-form-field>
+      <input name="subject" id="register-subject" type="text" placeholder="Subject of the Note" ngModel matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input name="initiatingdivision" id="register-initiatingdivision" type="text" placeholder="initiating Division" ngModel matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input name="initiatedBy" id="register-initiatedBy" type="text" placeholder="initiating EC" ngModel matInput>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary">Submit</button>
+  </form>
+</section>
+

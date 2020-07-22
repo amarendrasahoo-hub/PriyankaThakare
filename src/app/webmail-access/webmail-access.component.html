@@ -1,0 +1,22 @@
+<section>
+<p>{{respMessage}}</p>
+  <form (ngSubmit)="onSubmit()" [formGroup]="webmailaccessForm" fxLayout="column" fxLayoutAlign="center center">
+    <br>
+    <p>Request for Webmail Access</p>
+  <div> 
+      <mat-form-field>
+          <input type="email" matInput placeholder="Exisisting Email ID" formControlName="currentEmailID" required>
+      </mat-form-field>
+    </div>
+    <div>
+    <button mat-raised-button type="submit" [disabled]="!webmailaccessForm.valid" color="primary">Submit</button>
+  </div>
+  </form>
+  
+  <!-- {{respMessage}} -->
+  </section>
+  <!-- <div>
+    <button mat-stroked-button type="button">Attach Screenshot</button>
+    <input type="file">
+  </div> -->
+  

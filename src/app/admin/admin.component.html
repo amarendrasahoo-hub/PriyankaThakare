@@ -1,0 +1,81 @@
+<section>
+<div class="example-container mat-elevation-z8">
+
+
+    
+      <mat-table #table [dataSource]="dataSource" matSort>
+    
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+    
+        <!-- Position Column 
+        <ng-container matColumnDef="position">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        </ng-container> -->
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="process_type">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Process Type</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.process_type}} </mat-cell>
+        </ng-container>
+    
+        <!-- Weight Column -->
+        <ng-container matColumnDef="process_id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Process Id</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.process_id}} </mat-cell>
+        </ng-container>
+
+        <!-- Requested By Column -->
+        <ng-container matColumnDef="req_by">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Requested By</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.req_by}} </mat-cell>
+        </ng-container>
+
+        <!-- Description Column -->
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+        </ng-container>
+    
+        <!-- Approvers Comment Column -->
+        <ng-container matColumnDef="approver_comments">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Approver Comments</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.approver_comments}} </mat-cell>
+        </ng-container>
+
+        <!-- Expanded Content Column - The detail row is made up of this one column -->
+        <ng-container matColumnDef="expandedDetail">
+          <mat-cell *matCellDef="let detail"> 
+            <div class="space">
+            The Approver Comments for {{detail.element.process_id}} is {{detail.element.approver_comments}} 
+            </div>
+            <div>
+                <mat-form-field>
+                    <input matInput placeholder="Remarks" [(ngModel)]="iremarks" #remarks name="remarks">
+                </mat-form-field>
+            </div>
+            <div class="space">
+                <button mat-raised-button type="submit" (click)="approveRequest(remarks.value, detail.element)">Approve</button>
+            </div>
+            <div class="space">
+                <button mat-raised-button type="button" (click)="rejectRequest(remarks.value, detail.element)">Reject</button> 
+            </div>
+          </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let element; let row; columns: displayedColumns;"
+                matRipple 
+                class="element-row" 
+                (click)="toggleRow(element)"></mat-row>
+    
+        <mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"
+                [@detailExpand]="row.element.show ? 'expanded' : 'collapsed'"
+                style="overflow: hidden"> 
+        </mat-row>
+      </mat-table>
+    </div>
+
+  </section>
+    

@@ -1,0 +1,113 @@
+
+<div class="topline">
+  <div *ngIf="isloggedin" class="welcome">
+    <p> {{ empname }}  </p>
+  </div>
+</div>
+<div class="navcontents">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" [routerLink]="['/home']"><img src="{{ imageSrc }}"></a>
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
+    <ul class="navbar-nav mr-auto">
+      <!-- <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home<span class="sr-only"></span></a>
+      </li> -->
+      <!-- <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/profile']" routerLinkActive="active">Account</a>
+      </li>fgdfg -->
+      <li ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+            <div class="my-drop-down">
+            <a class="dropdown-item" [routerLink]="['/profile']" routerLinkActive="active">My Profile</a>
+            <a class="dropdown-item" [routerLink]="['/my-assets']" routerLinkActive="active">My Assets</a>
+            <a class="dropdown-item" href="#">My CRs</a>
+          </div>
+          </div>
+        </li>
+      <li ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Asset Management</a>
+          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+            <div class="my-drop-down">
+            <a class="dropdown-item" [routerLink]="['/new-request']" routerLinkActive="active">New Request</a>
+            <a class="dropdown-item" [routerLink]="['/cancel']" routerLinkActive="active">Return/Cancel</a>
+            </div>
+          </div>
+      </li>
+      <li ngbDropdown class="nav-item dropdown">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Change Request</a>
+            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+              <div class="my-drop-down">
+              <a class="dropdown-item" [routerLink]="['/create-cr']" routerLinkActive="active">Create CR</a>
+              <a class="dropdown-item" [routerLink]="['/uat-submit']" routerLinkActive="active">UAT Submission</a>
+              <a class="dropdown-item" [routerLink]="['/admin']" routerLinkActive="active">Admin</a>
+              
+            </div>
+            </div>
+        </li>
+        <!-- <li ngbDropdown class="nav-item dropdown">
+              <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Management Notes</a>
+              <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+                  <div class="my-drop-down">
+                <a class="dropdown-item" href="#">Create Note</a>
+                <a class="dropdown-item" href="#">Edit Note</a>
+              </div>
+            </div>
+        </li> -->
+      <!-- <li class="nav-item">
+        <a class="nav-link" routerLink="terms" routerLinkActive="active">Reports</a>
+      </li> -->
+      
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span></a></li>
+      </ul>
+     </div>
+     <a class="nav-link" style="cursor: pointer;" *ngIf="isloggedin" (click)="logoutUser()">Logout</a>   
+  <app-login-new  *ngIf="!isloggedin"></app-login-new>
+  
+  <app-notification></app-notification>
+
+
+  
+</nav>
+</div>
+<!-- <div class="container">
+  <router-outlet></router-outlet>
+</div> -->
+      <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+              <li ngbDropdown class="nav-item dropdown">
+                <a ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </nav> -->

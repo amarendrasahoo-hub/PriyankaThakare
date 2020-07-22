@@ -1,0 +1,28 @@
+<form novalidate [formGroup]='form'>    
+    <div>
+        <label>{{ title }}</label>
+        <ckeditor formControlName="crProcessRichTextEditor"></ckeditor>
+    </div>   
+    <div>    
+        <button type="submit" (click)='save()'>Submit</button>    
+        <button type="submit" (click)='close()'>Cancel</button>    
+    </div>        
+</form>     
+
+<!-- <h2 mat-dialog-title>{{ title }}</h2> -->
+
+<!-- <mat-dialog-content [formGroup]="form">
+     <mat-form-field>
+        <input matInput
+                placeholder="Course Description"
+               formControlName="description">
+    </mat-form-field>
+      
+        <ckeditor formControlName="crProcessRichTextEditor">    
+        </ckeditor>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button class="mat-button"(click)="save()" #myInput cdkFocusInitial>Save</button>
+    <button class="mat-button"(click)="close()">Close</button>
+</mat-dialog-actions> -->
+

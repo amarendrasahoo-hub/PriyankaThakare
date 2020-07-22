@@ -1,0 +1,43 @@
+
+<section>
+  <p>{{respMessage}}</p>
+  <br>
+<form (ngSubmit)="onSubmit()" [formGroup]="usbaccessForm" fxLayout="column" fxLayoutAlign="center center"> 
+  <p>Request for USB Access</p>
+   <div>
+     <mat-form-field>
+        <mat-label>Access Required For</mat-label>
+        <mat-select formControlName="accessfor" multiple>
+          <mat-option *ngFor="let access of accessList" [value]="access">{{access}}</mat-option>
+        </mat-select>
+      </mat-form-field> 
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Start Date</mat-label>
+        <input matInput readonly [matDatepicker]="spicker" placeholder="Start Date" formControlName="sdate" [min]="minDate">
+        <mat-datepicker-toggle matSuffix [for]="spicker"></mat-datepicker-toggle>
+        <mat-datepicker #spicker></mat-datepicker>
+     </mat-form-field>
+     <mat-form-field>
+      <mat-label>End Date</mat-label>
+      <input matInput readonly [matDatepicker]="epicker" placeholder="End Date" formControlName="edate" [min]="minDate">
+      <mat-datepicker-toggle matSuffix [for]="epicker"></mat-datepicker-toggle>
+      <mat-datepicker #epicker></mat-datepicker>
+   </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <textarea 
+                matInput 
+                placeholder="Reason"
+                formControlName="reason"></textarea>
+        </mat-form-field>
+    </div>
+    <div>
+    <button mat-raised-button type="submit" [disabled]="!usbaccessForm.valid" color="primary">Submit</button>
+  </div>
+</form>
+
+<!-- {{respMessage}} -->
+</section>

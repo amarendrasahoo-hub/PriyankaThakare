@@ -1,0 +1,25 @@
+<h1 mat-dialog-title class="f">Row Action :: <strong>{{action}}</strong></h1>
+<div mat-dialog-content class="f">
+  <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+    <input placeholder="Tcode" matInput [(ngModel)]="local_data.tcode">
+  </mat-form-field>
+  <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+  <input placeholder="Steps for Execution" matInput [(ngModel)]="local_data.stepsforexecution">
+  </mat-form-field>
+  <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+    <input placeholder="Expected Result" matInput [(ngModel)]="local_data.expectedresult">
+  </mat-form-field>
+  <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+    <input placeholder="Output Result" matInput [(ngModel)]="local_data.outputresult">
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+      <input placeholder="Status" matInput [(ngModel)]="local_data.status">
+      </mat-form-field>
+  <ng-template #elseTemplate>
+    Sure to delete? <b>{{local_data.id}}</b>?
+  </ng-template>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="doAction()">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>

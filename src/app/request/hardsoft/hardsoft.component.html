@@ -1,0 +1,85 @@
+<section>
+    <p>{{respMessage}}</p>
+<form (ngSubmit)="onSubmit()" [formGroup]="hardsoftForm" fxLayout="column" fxLayoutAlign="center center">
+    <br>
+    <p>Request for hardware or software</p>
+   <div>
+    <mat-form-field>
+      <mat-label>To be used by </mat-label>
+      <mat-select formControlName="useBy">
+       <mat-option *ngFor="let user of users" [value]="user.value">
+          {{user.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div> 
+   <div class="valid_useBy" *ngIf="useBy.invalid && useBy.touched">
+       Please select the user for which the asset is requested
+   </div> 
+ <div>
+        <input type="radio"
+               name="assetCat"
+               formControlName="assetCat"
+               value="hardware"
+               (click)="selecthardwares()">&nbsp;Hardware &nbsp;&nbsp;
+         
+        <input type="radio"
+               name="assetCat"
+               formControlName="assetCat"
+               value="software"
+               (click)="selectsoftwares()">&nbsp;Software
+</div>
+<div>
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <mat-select formControlName="asset">
+        <mat-option *ngFor="let asset of assets" [value]="asset">
+         {{asset}}
+        </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="valid_asset" *ngIf="asset.invalid && asset.touched">
+    Please select an asset 
+ </div> 
+<div>
+    <mat-form-field>
+        <input 
+            matInput
+            placeholder="Quantity" 
+            type="number"
+            formControlName="quantity">
+    </mat-form-field>
+</div>
+<div class="valid_quantity" 
+    *ngIf="quantity.invalid && quantity.touched">
+    <div *ngIf="quantity.errors.required">
+        Please enter the quantity
+    </div>   
+    <div *ngIf="quantity.errors.min">
+        Quantity should be equal to or mora than one.
+    </div>
+</div> 
+<div>
+    <mat-form-field>
+        <textarea 
+            matInput 
+            placeholder="Reason"
+            formControlName="reason"></textarea>
+    </mat-form-field>
+</div>
+<div class="valid_reason" 
+    *ngIf="reason.invalid && reason.touched">
+    <div *ngIf="reason.errors.required">
+        Please enter the reason 
+    </div>   
+    <div *ngIf="reason.errors.minlength">
+            Minimum length of reason should be mora than five charecters
+    </div>
+</div> 
+<div>
+<button mat-raised-button type="submit" color="primary">Submit</button>
+</div>
+</form>
+
+</section>

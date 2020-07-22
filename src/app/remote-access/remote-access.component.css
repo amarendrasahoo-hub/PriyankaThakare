@@ -1,0 +1,17 @@
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 30px;
+}
+section{
+    margin-top: 10%;
+    margin-bottom: 3%;
+  }
+
+  .inputmargin{
+    margin: 15px;
+  }
+  p{
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    color: brown;
+  }

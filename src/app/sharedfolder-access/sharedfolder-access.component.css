@@ -1,0 +1,57 @@
+
+  .action-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  .output {
+    padding: 20px;
+  }
+  
+  .delete {
+    color: red  ;
+  }
+  
+  .done {
+    color: green;
+  }
+  
+  .edit {
+    color: yellow;
+  }
+  table, th, td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+  }
+  
+  td {
+    text-align: left;
+    font-size: smaller;
+    padding: 5px;
+    word-wrap: break-word;
+    height: 50px;
+  }
+  tr:nth-child(even){background-color: #f2f2f2}
+  
+  th {
+    background-color: #4CAF50;
+    color: white;
+    font-size: smaller;
+    padding: 8px;
+    text-align: center;
+  }
+  .w50{
+    width: 50px;
+  }
+  .w200{
+    width: 200px;
+  }
+  .w300{
+    width: 300px;
+  }
+  .w65{
+    width: 65px;
+  }
+  mat-icon{
+    cursor: pointer;
+  }

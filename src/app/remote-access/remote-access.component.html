@@ -1,0 +1,53 @@
+<section>
+<div class="container">
+       
+    <form [formGroup]="form" (ngSubmit)="submit()" fxLayout="column" fxLayoutAlign="center center">
+        <p>Request for Remote Access</p>
+        <div class="form-group">
+            
+            <div>
+                <label for="accesstype">Access Type:</label>
+              <input id="citrix" 
+                        type="radio" 
+                        value="citrix" 
+                        name="accesstype" 
+                        [(ngModel)]="model" 
+                        formControlName="accesstype" 
+                        (change)="changeAccessType($event)"
+                        class="inputmargin">
+              <label for="citrix">Citrix</label>
+              <input id="vpn" 
+                        type="radio" 
+                        value="vpn" 
+                        name="accesstype" 
+                        [(ngModel)]="model" 
+                        formControlName="accesstype" 
+                        (change)="changeAccessType($event)"
+                        class="inputmargin">
+              <label for="vpn">VPN</label>
+           </div>
+              
+            <div *ngIf="f.accesstype.touched && f.accesstype.invalid" class="alert alert-danger">
+                <div *ngIf="f.accesstype.errors.required">Access Type is required.</div>
+            </div>
+            <div *ngIf="model === 'citrix'">
+                <mat-form-field>
+                <mat-label>Applications to be deployed</mat-label>
+                <mat-select formControlName="citrixapps" multiple [disabled]="ddlstatus">
+                    <mat-option *ngFor="let app of deployApps" [value]="app.value">
+                        {{app.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            </div>
+            <div *ngIf="model === 'vpn'">
+                <mat-form-field>
+                    <input matInput placeholder="IP Address" formControlName="ip">
+                </mat-form-field>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>
+</section>

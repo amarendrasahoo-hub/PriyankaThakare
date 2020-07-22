@@ -1,0 +1,21 @@
+#footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding: 1rem;
+    background:#14aff1;
+    text-align: center;
+    height: 50px;
+ }
+ #container {
+   min-height:100%;
+   position:relative;
+}
+/* #header {
+   padding:10px;
+} */
+#body {
+   padding-bottom:60px;   /* Height of the footer */
+}
+
+ 

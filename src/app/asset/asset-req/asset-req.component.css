@@ -1,0 +1,25 @@
+.form_container{
+    text-align: left;
+    border: 1px solid blue;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px;
+  }
+.container{
+  border: 1px solid blue;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 10px;
+}
+.valid_assettype {
+  color: brown;
+}
+.valid.quantity{
+  color: blue;
+}
+
+table,tr,td {
+border: 1px solid black;
+border-collapse: collapse;
+padding: 5px;
+}

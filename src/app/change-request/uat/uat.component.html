@@ -1,0 +1,137 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="uatForm" class="form-box">
+    <div>
+        <div class="ticket">
+        <mat-form-field>
+            <input 
+                matInput
+                placeholder="SolMan Ticket"
+                type="number"
+                formControlName="ticket">
+        </mat-form-field>
+        <button mat-mini-fab type="button" color="primary">Get</button>
+        </div>
+        <div class="solman-data">
+          <mat-form-field >
+            <input 
+                matInput
+                type="text"
+                placeholder="Component"
+                Value="Finance"
+                readonly="true"
+                formControlName="component">
+            </mat-form-field>
+                
+            <mat-form-field>   
+            <input
+                matInput
+                type="text"
+                placeholder="Priority"
+                Value="Very High"
+                readonly="true"
+                formControlName="priority">
+            </mat-form-field>
+            <mat-form-field>   
+              <input
+                  matInput
+                  type="text"
+                  placeholder="Raised On"
+                  Value="01.Jan.2020"
+                  readonly="true"
+                  formControlName="raisedOn">
+              </mat-form-field>
+        </div>
+    
+</div>
+
+<!-----to add and remove dynamic rows and columns ---->
+<div class="testscript">
+    <table class="table table-striped table-bordered">    
+        <thead>    
+            <tr>    
+                <th>Action</th>    
+                <th>Tcode</th>    
+                <th>Steps for Executtion</th>    
+                <th>Expected Result</th> 
+                <th>Output Result</th>    
+                <th>Status</th>
+                <th>Remark</th>
+            </tr>    
+        </thead>    
+        <tbody>    
+             <tr *ngFor="let script of scripts; let i = index;">    
+              <td> <button type="button" (click)="deleteRow(i)"><img src="assets/images/delete2.jpg"  height="30px" width="30px"></button>
+
+              </td> 
+                 
+                <td>    
+                  <input [(ngModel)]="scripts[i].tcode" [ngModelOptions]="{standalone: true}" class="form-control" type="text" />    
+                </td>
+                
+                <td>    
+                  <input [(ngModel)]="scripts[i].step" [ngModelOptions]="{standalone: true}" class="form-control" type="text" />    
+                </td>    
+                <td>    
+                  <input [(ngModel)]="scripts[i].exp_res" [ngModelOptions]="{standalone: true}" class="form-control" type="text"/>    
+                </td>    
+                <td>    
+                    <input [(ngModel)]="scripts[i].out_res" [ngModelOptions]="{standalone: true}" class="form-control" type="text"/>    
+                  </td>
+                  <td>    
+                    <input [(ngModel)]="scripts[i].status" [ngModelOptions]="{standalone: true}" class="form-control" type="text"/>    
+                  </td> 
+                  <td>    
+                    <input [(ngModel)]="scripts[i].remarks" [ngModelOptions]="{standalone: true}" class="form-control" type="text"/>    
+                  </td> 
+  
+            </tr>    
+            <tr>    
+              <td ><button type="button" (click)="addRow()"><img src="assets/images/insert.jpg"  height="30px" width="30px"></button>    
+                    
+              </td>    
+            </tr>    
+        </tbody>    
+    </table>
+
+</div>
+
+
+<!-- -----  End of code for dynamic addition and removal of rows      -->
+    <div class="uat-data">
+    <div class="radio-box">
+       Uat Status
+        <input type="radio"
+               name="uatStatus"
+               formControlName="uatStatus"
+               value="cr">Passed
+        <input type="radio"
+               name="uatStatus"
+               formControlName="uatStatus"
+               value="bug">Failed       
+    </div>
+    <div>
+        <div>
+        <mat-form-field>
+            <textarea 
+                matInput
+                placeholder="Reason(If failed)"
+                formControlName="reason">
+            </textarea>
+        </mat-form-field>
+        </div>
+        <div>
+        <mat-form-field>
+            <textarea 
+                matInput
+                placeholder="Action to be taken11"
+                formControlName="action">
+            </textarea>
+        </mat-form-field>
+        </div>    
+    </div>
+    <button mat-raised-button type="submit" color="primary">Move to Production</button> 
+    <button mat-raised-button type="submit" color="warn">Needs Modification</button> 
+    </div>
+
+    
+  </form>
+  {{respMessage}}

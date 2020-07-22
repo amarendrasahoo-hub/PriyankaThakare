@@ -1,0 +1,21 @@
+.navbar{
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: smaller;
+}
+.my-drop-down {
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: smaller;
+}
+.topline{
+  background-color: #14aff1;
+  height: 29px;
+}
+.welcome{
+  text-align: justify;
+}
+.contentalign{
+  align-content: center;
+  margin-left: 500px;
+}
