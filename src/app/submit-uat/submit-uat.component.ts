@@ -19,7 +19,7 @@ interface forMatSelect {
   viewValue: string;
 }
 const ELEMENT_DATA: UsersData[] = [
-  { id: 0, tcode: '', stepsforexecution: '', expectedresult: '', outputresult: '', status: ''},
+  //{ id: 0, tcode: '', stepsforexecution: '', expectedresult: '', outputresult: '', status: ''},
   //  {id: 1560608769632, tcode: 'Artificial Intelligence', stepsforexecution: 'abcdFinally, once you have defined your columns, you need to tell the table which columns will be rendered in the header and data rows. To start, create a variable in your component that contains the list of the columns you want to render.', expectedresult: 'sjrbguebobsjvs', outputresult: 'irgheuhgoiebvodfnov', status: 'OK'},
   //  {id: 1560608796014, tcode: 'Machine Learning', stepsforexecution: 'abcd', expectedresult: 'sjrbguebobsjvs', outputresult: 'irgheuhgoiebvodfnov', status: 'OK'},
   //  {id: 1560608787815, tcode: 'Robotic Process Automation', stepsforexecution: 'abcd', expectedresult: 'sjrbguebobsjvs', outputresult: 'irgheuhgoiebvodfnov', status: 'OK'},
@@ -138,16 +138,17 @@ export class SubmitUatComponent implements OnInit {
    
        // console.log(uat);
        // console.log("datasource", this.dataSource);
-        for( let i = 0; i< this.dataSource.length; i++){
+        for( let i = 0; i < this.dataSource.length; i++){
           let testscriptobj = {
             tcode : this.dataSource[i].tcode,
             steps : this.dataSource[i].stepsforexecution,
             exp_result :  this.dataSource[i].expectedresult,
             out_result :  this.dataSource[i].outputresult,
             status:  this.dataSource[i].status,
-            id :  this.dataSource[i].id
+            remark :  this.dataSource[i].id
           }
           this.uatTestScript.push(testscriptobj);
+          console.log('submit function for loop', testscriptobj);
         }
       //console.log(this.uatTestScript);
        // uat.testScript = this.uatTestScript;
@@ -164,13 +165,15 @@ export class SubmitUatComponent implements OnInit {
          uatSerialNo: null,
          processId : 'UT',
          reqBy: 'SS004700',
-         ticketNo: this.uatForm.value.ticketno,
+         ticketNo: Number(this.uatForm.value.ticketno),
          component: this.uatForm.value.component,
          priority: this.uatForm.value.priority,
          raisedon: this.uatForm.value.raisedOn,
          testScript: this.uatTestScript,   // CR – Change Request, BF – Bug Fixing
          uatStatus: this.uatForm.value.uatStatus,
-         action: '',
+         raisedOn: this.uatForm.value.raisedOn,
+         reason: this.uatForm.value.failurereason,
+         action: this.uatForm.value.actiontobetaken,
          file: fd,
          reqDate : date,
          reqTime : date.toLocaleTimeString(),

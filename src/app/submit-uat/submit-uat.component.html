@@ -4,7 +4,7 @@
 <div class="container">
   
 <mat-card>
-  <form (submit)="onSubmit()" [formGroup]="uatForm" enctype="multipart/form-data">
+  <form (submit)="onSubmit()" [formGroup]="uatForm">
     <div>
       <mat-form-field>
             <input matInput placeholder="SolMan Ticket No." formControlName="ticketno">
@@ -54,12 +54,14 @@
       <input type="file" #uploadFile (change)="onFileSelected($event)">
     </div>
     <div id='childbtn'>
-      <button mat-button mat-flat-button (click)="openDialog('Add',{})" color="primary">Add Row</button>
+      <button type="button" mat-button mat-flat-button (click)="openDialog('Add',{})" color="primary">Add Row</button>
       <!-- <button mat-raised-button type="submit" color="warn">Needs ngModification</button>  -->
     </div>
     <div>
       <table mat-table [dataSource]="dataSource" #mytable class="my-table mat-elevation-z8">
-   
+        <ng-container *ngIf="dataSource.length > 0">
+          <p>There is no data for this filter</p>
+      </ng-container>
       <!-- Id Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> Sr No </th>
