@@ -12,8 +12,8 @@ import { map, flatMap, filter, reduce } from 'rxjs/operators';
 export class WorkflowService{
   // private getUrl = 'http://localhost:3000/assets/workflow/display';
   // private updUrl = 'http://localhost:3000/assets/workflow/update';
-  private getUrl = 'http://nodefilemanagement-env.eba-md56muk4.ap-south-1.elasticbeanstalk.com/assets/workflow/display';
-  private updUrl = 'http://nodefilemanagement-env.eba-md56muk4.ap-south-1.elasticbeanstalk.com/assets/workflow/update';
+  private getUrl = 'http://59.145.135.45/assets/workflow/display';
+  private updUrl = 'http://59.145.135.45/assets/workflow/update';
   constructor(private http : HttpClient) {   }
 
   getWorkflow(userid : string): Observable<Workflow[]>{

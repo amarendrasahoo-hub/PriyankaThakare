@@ -39,6 +39,8 @@
 
           <li><a *ngIf="!loginService.isLoggedin()" [routerLink] = "['login']" href="#">Login</a></li>
           <li><a *ngIf="loginService.isLoggedin()" (click)='loginService.logoutUser()' href="#">Logout</a></li>
+          <li><a *ngIf="loginService.isLoggedin()" href="#"><app-notification></app-notification>
+          </a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
