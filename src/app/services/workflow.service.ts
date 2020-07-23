@@ -16,6 +16,7 @@ export class WorkflowService{
   private updUrl = 'http://59.145.135.45/assets/workflow/update';
   constructor(private http : HttpClient) {   }
 
+  
   getWorkflow(userid : string): Observable<Workflow[]>{
    let url = this.getUrl + '/' + userid;
    console.log("URL - ", url);
