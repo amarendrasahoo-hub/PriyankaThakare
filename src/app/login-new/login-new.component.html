@@ -4,7 +4,7 @@
           {{ isLoginMode ? 'Logout' : 'Login' }}
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownForm1" *ngIf="!isLoginMode" >
-          <form class="px-4 py-3" (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
+          <form class="px-4 py-3" (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoginMode">
             <div class="form-group" >
               <mat-form-field>
                 <input matInput name="username" ngModel type="text" placeholder="Username" #usernameInput="ngModel" required>

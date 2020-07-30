@@ -3,7 +3,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule, 
+import { MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule, MatBadgeModule,
   MatExpansionModule, MatMenuModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -64,7 +64,6 @@ import {CdkStepperModule} from '@angular/cdk/stepper';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatBadgeModule} from '@angular/material/badge';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatChipsModule} from '@angular/material/chips';
@@ -87,6 +86,9 @@ import { AssetManagementComponent } from './asset-management/asset-management.co
 import { SapRequestsComponent } from './sap-requests/sap-requests.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { RemoteAccessComponent } from './remote-access/remote-access.component';
+import { ApproverComponent } from './approver/approver.component';
+import { TestmatComponent } from './testmat/testmat.component';
+import { AdminDialogComponent } from './admin/admin-dialog.component';
 
 @NgModule({
   declarations: [
@@ -125,6 +127,9 @@ import { RemoteAccessComponent } from './remote-access/remote-access.component';
     SapRequestsComponent,
     ContactUsComponent,
     RemoteAccessComponent,
+    ApproverComponent,
+    TestmatComponent,
+    AdminDialogComponent,
     ],
   imports: [
     NgbModule,
@@ -205,7 +210,7 @@ import { RemoteAccessComponent } from './remote-access/remote-access.component';
       multi: true 
     }],
   bootstrap: [AppComponent],
-  entryComponents: [WorkFlowDialogComponent, TextEditorComponent, AddrowUatComponent, AdminComponent]
+  entryComponents: [WorkFlowDialogComponent, TextEditorComponent, AddrowUatComponent, AdminComponent, AdminDialogComponent]
 
 })
 

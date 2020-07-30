@@ -21,17 +21,16 @@ export class MyAssetsComponent implements OnInit {
 
   public myAssets;// = assets;
  
-  constructor(private myAsset: MyAssetService) {}
-
-  ngOnInit() {
-
- 
+  constructor(private myAsset: MyAssetService) {
     this.myAsset.getMyAssets()
              .subscribe(
               data => { 
               this.myAssets = data
               console.log(data)
              });
+  }
+
+  ngOnInit() {
     
   }
 }

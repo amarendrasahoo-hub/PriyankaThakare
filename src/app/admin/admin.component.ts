@@ -1,116 +1,185 @@
-import { ViewChild, Component } from '@angular/core';
-import { DataSource } from '@angular/cdk/collections';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { MatTableDataSource, MatSort } from '@angular/material';
-import { HttpClient,  HttpClientModule, HttpParams  } from '@angular/common/http';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { AdminDialogComponent } from './admin-dialog.component'
+import { Workflow } from '../model/workflow';
+import { MatTableDataSource } from '@angular/material';
+import { UpdateWorkflow } from '../model/updateWorkflow';
 import { LoginService } from '../services/login.service';
-import { map } from 'rxjs/operators';
-import { ReqRaised } from '../model/req-raised'
-import { Data } from '@angular/router';
-import { Observable } from 'rxjs';
+
+
+export interface PeriodicElement {
+  position: number;
+  process_type: string;
+  process_id : string;
+  description: string;
+  req_by: string;
+  assign_date: string;
+  icon: string;
+  approver_comments: string;
+}
+
+export interface DialogData{
+  description: string;
+  riasedBy: string;
+}
+
+const element_data: PeriodicElement[] = [
+  // {position: 1, id: '5456225', description: 'Desktop', raisedBy: 'Amarendra', raisedOn: '01.02.2020', icon : 'reorder'},
+  // {position: 2, id: '6386524', description: 'Change Request', raisedBy: 'Priyamvad', raisedOn: '31.12.2020', icon : 'reorder'},
+  // {position: 3, id: '8985854', description: 'USB Access', raisedBy: 'Priyanka', raisedOn: '22.12.2019', icon : 'reorder'},
+  // {position: 4, id: '2335648', description: 'ShareFolder', raisedBy: 'Debopam', raisedOn: '18.05.2020', icon : 'reorder'},
+  // {position: 5, id: '4556832', description: 'Laptop', raisedBy: 'Shikha', raisedOn: '01.03.2020', icon : 'reorder'},      
+];
+
+
+//workFlowDialogRef: MatDialogRef<WorkFlowDialogComponent>;
+
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0', visibility: 'hidden' })),
-      state('expanded', style({ height: '*', visibility: 'visible' })),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
+  styleUrls: ['./admin.component.css']
 })
 
-export class AdminComponent {
-  public data: ReqRaised[];
-  displayedColumns = ['process_type', 'process_id', 'req_by', 'description', 'approver_comments' ];
-  dataSource = new MatTableDataSource<ReqRaised>();
-  elementData: ReqRaised[];  
-  tempElementData: any;
-  isExpansionDetailRow = (i: number, row: Object) => {
-    //console.log(row);
-    return row.hasOwnProperty('detailRow');
-  } 
-  expandedElement: any;
-  messageSuccess: boolean;
-  iremarks: string;
 
-  // @ViewChild(MatSort) sort: MatSort;
-  // @ViewChild('sort', { static: true }) sort: MatSort;
+export class AdminComponent implements OnInit {
 
+  constructor(private dialog: MatDialog, private loginService : LoginService) { }
+
+public myWorkflows = [];
+public newdatasource = [] ;
+MyDataSource: any; 
+ApprovalMessage = '';
+
+data : { id: string,
+         name :string, 
+         for: string
+        }  
+  comments : string;
+  action: string;
+  workflowData : Workflow;
+  dataSource = element_data;
+
+
+  adminDialogRef : MatDialogRef<AdminDialogComponent>;
 
   ngOnInit() {
-    //this.dataSource = new MatTableDataSource(this.data);
 
-    //this.dataSource.sort = this.sort;
-    // this.dataSource.sortingDataAccessor = (item, property) => {
+    this.loginService.getAdminDataSource()
+    .subscribe(
+      (data) => {
+        this.MyDataSource = new MatTableDataSource(); 
+        this.myWorkflows = data;
+        console.log(data);
+        //console.log("type of newdatasource", typeof(this.newdatasource), typeof(this.dataSource));
+        console.log("My Workflow", this.myWorkflows[5] );
+        let processDescription  = '';
+        for(let i = 0; i < this.myWorkflows.length; i++ ){
+         
+          switch(this.myWorkflows[i].process_type) {
+            case 'WM':
+              processDescription = 'WebMail Access'
+              break;
+            case 'HS':
+              processDescription = 'Hardware/Software'
+              break;
+            case 'UP':
+              processDescription = 'USB/Pend Drive Access'
+              break; 
+            case 'SF':
+              processDescription = 'Share Folder Access'
+              break;  
+            default:
+              // code block
+          }
+          //console.log(processDescription,this.myWorkflows[i])
+          let newWorkFlow = {
+            position : i + 1,
+            process_type : this.myWorkflows[i].process_type,
+            process_id : this.myWorkflows[i].process_id,                
+            description : processDescription,
+            req_by : this.myWorkflows[i].req_by,
+            assign_date : this.myWorkflows[i].assign_date,
+            approver_comments: this.myWorkflows[i].approver_comments,
+            icon : 'reorder'
+          }
+          //{position: 1, id: '5456225', description: 'Desktop', raisedBy: 'Amarendra', raisedOn: '01.02.2020', icon : 'reorder'
+          //console.log(this.myWorkflows[i].process_id);
+          this.dataSource.push(newWorkFlow);
 
-    //   let newItem;
-    //   if (item.element !== undefined)
-    //     newItem = item.element;
-    //   else
-    //     newItem = item; 
-
-    //   console.log(this.tempElementData); 
-    //   let foundElement;
+        }
+        this.MyDataSource.data = this.dataSource;
+        console.log("New Datasource",this.MyDataSource);
+        console.log("Datasource",this.dataSource);
       
-    //   if (item.element !== undefined)
-    //     foundElement = this.tempElementData.find(i => i.element !== undefined && item.element.name === i.element.name);
-    //   else 
-    //     foundElement = this.tempElementData.find(i => item.name === i.name);
-
-    //   let index = this.tempElementData.indexOf(foundElement);
-    //   console.log("foundElement: " + JSON.stringify(item) + " " + +index);
-    //   return +index;
-    // }
-  }
-  constructor(private http: HttpClient, private loginService: LoginService) { 
-    loginService.getAdminData().subscribe(
-      res => {
-        this.data = res;
-        this.dataSource = new MatTableDataSource(this.data);
+      },
+      (error : any) => {
+        console.log( "Error in accessing workflowdata", error);
       }
-    );
+    )
+
     
   }
-  getData(){
-    this.loginService.getAdminData()
-    .subscribe(response => {
-       //this.data = response
-      console.log(this.data)
-    });
-  }
-  getRows() { 
-    const rows = [];
-    this.data.forEach(element => rows.push(element, { detailRow: true, element }));
-    console.log(rows);
-    return rows;
-  }
 
-  toggleRow(value: ReqRaised) {
-    const foundElement = this.dataSource.data.find(elem => elem.element !== undefined && elem.element === value.process_id)    
-    console.log("The found element is " + JSON.stringify(foundElement));
-    const index = this.dataSource.data.indexOf(foundElement);
-    this.dataSource.data[index].element.show = !this.dataSource.data[index].element.show;
-  }
-  approveRequest(remarks: string, expandedRow: ReqRaised){
-    console.warn(remarks, expandedRow.process_id);
-    setTimeout(()=>{    //<<<---    using ()=> syntax
-    this.toggleRow(expandedRow)}, 3000);
-    this.iremarks = '';
-  }
-  rejectRequest(remarks: string, expandedRow: ReqRaised){
-    console.warn('rejected ' + expandedRow.process_id + ' because of ' + remarks);
-    this.toggleRow(expandedRow);
-    this.iremarks = '';
-  }
+  displayedColumns : string[] = ['position', 'process_type', 'process_id', 'req_by', 'assign_date', 'description', 'approver_comments', 'action' ];
   
+  
+  redirectToDetails(element) {
+   this.data = { 
+     id : element.process_id,
+     name : element.req_by,
+     for: element.description }
+
+  this.adminDialogRef = this.dialog.open(AdminDialogComponent, 
+    {
+      hasBackdrop : true,
+      data : this.data
+    });  
+
+  //  this.adminDialogRef.afterClosed()
+  //         .subscribe(
+  //             result => { 
+  //               console.log('The dialog is closed');
+  //               this.comments = result.comments;
+  //               this.action = result.action;
+  //               console.log(result, element.wf_id,element.process_id);
+  //               if (this.action == 'A'){
+  //                  element.icon = 'check_circle';
+  //                 // call update Workflow service
+  //                  let workflowdata = {
+  //                   worklfow_id : element.wf_id,
+  //                   process_type: element.process_id,
+  //                   process_id: element.process_id,
+  //                   user : 'SS004700',
+  //                   user_dept : 'B&T',
+  //                   action: 'A',
+  //                   comments : this.comments
+  //                  }
+  //                  console.log('calling service', workflowdata);
+  //                  this.loginService.updateWorkflow(workflowdata)
+  //                  .subscribe( (resp : WorkflowResponse) => {
+  //                    console.log(resp);
+  //                    if (resp.completed == true  ){
+  //                     this.ApprovalMessage = "Wrokflow " + resp.workflowId + " is approved by You";
+  //                    }
+  //                    else{
+  //                     this.ApprovalMessage = "Wrokflow " + resp.workflowId + " is approved by You..! The next Approver is " + resp.nextApprover;
+  //                    }
+  //                   },
+  //                   (error : any ) => {
+  //                     console.log(error);
+  //                   }
+  //                  )
+
+  //                 }
+  //               else if (this.action == 'R') {
+  //                 element.icon = 'cancel'
+  //               }
+  //               // icon = cancel for rejection
+  //             }
+  //           ) 
+ 
+   }
 
 }
-
-
-
-
-
-
 

@@ -9,6 +9,7 @@ import { windowWhen } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ReqRaised } from '../model/req-raised';
 import { map } from 'rxjs/operators';
+import { Admin } from '../model/admin';
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +44,14 @@ export class LoginService {
   getAdminData(){
     return this.http.get('http://59.145.135.45:3000/admin/display/SS004700');
   }
-  
+  getAdminDataSource(): Observable<Admin[]>{
+     return this.http.get<Admin[]>('http://59.145.135.45:3000/admin/display/SS004700');
+    }
+  heroesUrl= 'http://59.145.135.45:3000/admin/display/SS004700';
+  /** GET heroes from the server */
+  getHeroes(): Observable<[]> {
+  return this.http.get<[]>(this.heroesUrl)
+}
 
 
 

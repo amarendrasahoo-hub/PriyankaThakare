@@ -63,7 +63,8 @@ export class SubmitUatComponent implements OnInit {
     raisedOn: new FormControl(null, Validators.required),
     uatstaus: new FormControl(null, Validators.required),
     failurereason: new FormControl(null, Validators.required),
-    actiontobetaken: new FormControl(null, Validators.required)
+    actiontobetaken: new FormControl(null, Validators.required),
+    uploadedfile: new FormControl(null)
   });
 
   @ViewChild(MatTable,{static:true}) table: MatTable<any>;
@@ -94,6 +95,7 @@ export class SubmitUatComponent implements OnInit {
   }
     addRowData(row_obj){
       var d = new Date();
+      console.log('in table', row_obj);
       this.dataSource.push({
         id:d.getTime(),
         tcode:row_obj.tcode,
@@ -103,7 +105,6 @@ export class SubmitUatComponent implements OnInit {
         status:row_obj.status
       });
       this.table.renderRows();
-      
     }
     updateRowData(row_obj){
       this.dataSource = this.dataSource.filter((value,key)=>{
@@ -115,6 +116,7 @@ export class SubmitUatComponent implements OnInit {
           value.status = row_obj.status;
         }
         return true;
+        
       });
     }
     deleteRowData(row_obj){
@@ -126,8 +128,13 @@ export class SubmitUatComponent implements OnInit {
     selectedFile: File = null;
     onFileSelected(event) {
       this.selectedFile = <File>event.target.files[0];
+      this.uatForm.patchValue({
+        uploadedfile : this.selectedFile
+      });
       //console.log(event);
     }
+
+    
     onSubmit(){
    
       if(this.uatForm.invalid){
@@ -148,18 +155,15 @@ export class SubmitUatComponent implements OnInit {
             remark :  this.dataSource[i].id
           }
           this.uatTestScript.push(testscriptobj);
-          console.log('submit function for loop', testscriptobj);
+          console.log('submit function for loop', 'i=',i,testscriptobj);
         }
-      //console.log(this.uatTestScript);
-       // uat.testScript = this.uatTestScript;
-        //console.log(uat);
        var date = new Date();
        const fd = new FormData();
        fd.append('file', this.selectedFile, this.selectedFile.name);
+
        //console.log('Selected File' + this.selectedFile);
        //console.log(fd.get('uploadedfile'));
 
-        
        const uat = { 
          uatNo: '',
          uatSerialNo: null,
@@ -179,7 +183,6 @@ export class SubmitUatComponent implements OnInit {
          reqTime : date.toLocaleTimeString(),
          department : 'B&T'
        }  
-       
        
         this.uatservice.postUat(uat)
         .subscribe((data: PostResponse)=>{

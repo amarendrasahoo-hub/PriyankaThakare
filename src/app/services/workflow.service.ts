@@ -12,8 +12,8 @@ import { map, flatMap, filter, reduce } from 'rxjs/operators';
 export class WorkflowService{
   // private getUrl = 'http://localhost:3000/assets/workflow/display';
   // private updUrl = 'http://localhost:3000/assets/workflow/update';
-  private getUrl = 'http://59.145.135.45/assets/workflow/display';
-  private updUrl = 'http://59.145.135.45/assets/workflow/update';
+  private getUrl = 'http://59.145.135.45:3000/assets/workflow/display';
+  private updUrl = 'http://59.145.135.45:3000/assets/workflow/update';
   constructor(private http : HttpClient) {   }
 
 
@@ -24,12 +24,12 @@ export class WorkflowService{
 
     return this.http.get<Workflow[]>(url);
    // return this.http.get<Workflow>(this.url);
-  //  return this.http
-  //  .get(this.url)
-  //  .map( (response : Response) => {
-  //   return <Workflow[]>response.json()y
-  //   ;
-  //  })
+   //  return this.http
+   //  .get(this.url)
+   //  .map( (response : Response) => {
+   //   return <Workflow[]>response.json()y
+   //   ;
+   //  })
   
 }
 

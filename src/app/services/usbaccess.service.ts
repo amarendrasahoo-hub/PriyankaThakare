@@ -8,7 +8,7 @@ import { PostResponse } from '../model/post-response';
   providedIn: 'root'
 })
 export class UsbaccessService {
-  private url = 'http://10.20.33.79:3000/assets/usb/create';
+  private url = 'http://59.145.135.45:3000/assets/usb/create';
 
   constructor(private http: HttpClient) { }
 

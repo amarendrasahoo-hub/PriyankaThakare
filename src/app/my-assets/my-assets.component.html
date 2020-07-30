@@ -1,4 +1,4 @@
-
+<section>
 <table class="table table-striped">
   <thead>
   <tr>
@@ -14,7 +14,7 @@
   <tr *ngFor="let asset of myAssets; index as i">
     <th scope="row">{{ i + 1 }}</th>
     <td>
-      <img src="assets/images/{{ asset.type | lowercase }}.jpg" class="grid-image">
+      <img src="assets/images/{{ asset.type }}.jpg" class="grid-image">
       
     </td>
     <td>{{ asset.type }}</td>
@@ -31,3 +31,4 @@
   {{ country.name }}
 </td>
 -->
+</section>

@@ -14,7 +14,7 @@ import { NgForm } from "@angular/forms";
   styleUrls: ['./login-new.component.css']
 })
 export class LoginNewComponent implements OnInit {
-  isLoginMode = false;
+  isLoginMode: Boolean = false;
   public userData: EmployeeData;
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;

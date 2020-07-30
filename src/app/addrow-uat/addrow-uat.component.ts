@@ -19,8 +19,9 @@ export class AddrowUatComponent {
   constructor(
     public dialogRef: MatDialogRef<AddrowUatComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData) {
-    console.log(data);
+    console.log('in add',data);
     this.local_data = {...data};
+    
     this.action = this.local_data.action;
   }
 
@@ -31,5 +32,5 @@ export class AddrowUatComponent {
   closeDialog(){
     this.dialogRef.close({event:'Cancel'});
   }
-
+  
 }

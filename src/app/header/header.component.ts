@@ -11,7 +11,7 @@ import { LoginService } from '../services/login.service';
 })
 export class HeaderComponent implements OnInit {
   currentJustify = 'center';
-  constructor(private loginService: LoginService) { }
+  constructor(public loginService: LoginService) { }
 
   ngOnInit() {
   }

@@ -14,15 +14,15 @@ import { PostResponse } from '../model/post-response';
 
 export class MyAssetService {
 
-  private url = 'http://10.20.33.79:3000/assets/hardsoft/display';
+  private url = 'http://59.145.135.45:3000/assetDet/angular_myasset1';
   // private urlpost = 'http://nodefilemanagement-env.eba-md56muk4.ap-south-1.elasticbeanstalk.com/assets/hardsoft/create';
-  private urlpost = 'http://10.20.33.79:3000/assets/hardsoft/create';
+  private urlpost = 'http://59.145.135.45:3000/assets/hardsoft/create';
   public abc = [];
   myassetnormal: any;
   constructor(private http: HttpClient) { }
 
   getMyAssets(): Observable<MyAsset[]> {
-    //console.log('inside service ', this.http.get<MyAsset[]>(this.url ))
+    console.log('inside service ', this.http.get<MyAsset[]>(this.url ))
   return this.http.get<MyAsset[]>(this.url);
    }
 

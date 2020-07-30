@@ -9,7 +9,7 @@ import { PostResponse } from '../model/post-response';
 })
 export class SharedfolderService {
 
-  private url = 'http://10.20.33.79:3000/assets/sharefolder/create';
+  private url = 'http://59.145.135.45:3000/assets/sharefolder/create';
 
   constructor(private http: HttpClient) { }
   

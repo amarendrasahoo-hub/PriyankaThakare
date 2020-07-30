@@ -13,6 +13,9 @@ interface Application{
   styleUrls: ['./remote-access.component.css']
 })
 export class RemoteAccessComponent implements OnInit {
+
+  ddlstatus : Boolean;
+
   deployApps: Application[] = [
     {value: 1, viewValue: 'SAP'},
     {value: 2, viewValue: 'Danaos'},

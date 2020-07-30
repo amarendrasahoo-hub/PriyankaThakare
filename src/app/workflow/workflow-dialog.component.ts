@@ -42,7 +42,7 @@ export class WorkFlowDialogComponent implements OnInit{
 
     constructor(private formBuilder: FormBuilder, 
                 private dialogRef : MatDialogRef<WorkFlowDialogComponent>,
-                @Inject(MAT_DIALOG_DATA) private data  
+                @Inject(MAT_DIALOG_DATA) public data  
                 ){  }
 
     ngOnInit(){
