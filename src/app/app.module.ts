@@ -89,6 +89,7 @@ import { RemoteAccessComponent } from './remote-access/remote-access.component';
 import { ApproverComponent } from './approver/approver.component';
 import { TestmatComponent } from './testmat/testmat.component';
 import { AdminDialogComponent } from './admin/admin-dialog.component';
+import { MyRequestsComponent } from './my-requests/my-requests.component';
 
 @NgModule({
   declarations: [
@@ -130,6 +131,7 @@ import { AdminDialogComponent } from './admin/admin-dialog.component';
     ApproverComponent,
     TestmatComponent,
     AdminDialogComponent,
+    MyRequestsComponent,
     ],
   imports: [
     NgbModule,

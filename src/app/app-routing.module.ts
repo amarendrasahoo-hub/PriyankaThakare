@@ -26,6 +26,7 @@ import { UsbAccessComponent } from './usb-access/usb-access.component';
 import { WebmailAccessComponent } from './webmail-access/webmail-access.component';
 import { RemoteAccessComponent } from './remote-access/remote-access.component';
 import { TestmatComponent } from './testmat/testmat.component';
+import { MyRequestsComponent } from './my-requests/my-requests.component';
 
 
 const routes: Routes = [
@@ -51,7 +52,7 @@ const routes: Routes = [
   { path: 'intro', component: IntroComponent},
   { path: 'remote', component: RemoteAccessComponent },
   { path: 'testmat', component: TestmatComponent },
-
+  { path: 'myrequests', component: MyRequestsComponent },
   { 
     path: 'account', 
     component:AccountComponent,
