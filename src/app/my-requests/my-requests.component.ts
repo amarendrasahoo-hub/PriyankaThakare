@@ -51,7 +51,7 @@ dataSourceBoth = new MatTableDataSource<MyRequests>();
 /* for showing data from the hard codeed Array  */
 
 dataSource : MatTableDataSource<PeriodicElement>;
-displayedColumns : string[] = [ 'reqno', 'processid', 'assettype', 'reason', 'reqdate'];
+displayedColumns : string[] = ['sno', 'reqno', 'processid', 'assettype', 'reason', 'reqdate'];
   
   constructor(private reqService: MyRequestsService) {}
 
