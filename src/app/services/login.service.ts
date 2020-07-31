@@ -27,7 +27,7 @@ export class LoginService {
 
   login(username: string, password: string){
     const userAuthData: Login = {user: username, pass: password};
-    return this.http.post<any>('http://59.145.135.45:3000/activeDir/angular_auth', userAuthData);
+    return this.http.post<any>('https://59.145.135.45:3000/activeDir/angular_auth', userAuthData);
   }
   isLoggedin(){
     return !!localStorage.getItem("token");
