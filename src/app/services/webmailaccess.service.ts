@@ -9,7 +9,7 @@ import { PostResponse } from '../model/post-response';
 })
 export class WebmailaccessService {
 
-  private url = 'http://59.145.135.45:3000/assets/webmail/create';
+  private url = 'https://59.145.135.45:3000/assets/webmail/create';
 
   constructor(private http: HttpClient) { }
 
