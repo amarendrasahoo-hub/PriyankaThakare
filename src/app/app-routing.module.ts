@@ -27,6 +27,7 @@ import { WebmailAccessComponent } from './webmail-access/webmail-access.componen
 import { RemoteAccessComponent } from './remote-access/remote-access.component';
 import { TestmatComponent } from './testmat/testmat.component';
 import { MyRequestsComponent } from './my-requests/my-requests.component';
+import { ApproverComponent } from './approver/approver.component';
 
 
 const routes: Routes = [
@@ -53,6 +54,7 @@ const routes: Routes = [
   { path: 'remote', component: RemoteAccessComponent },
   { path: 'testmat', component: TestmatComponent },
   { path: 'myrequests', component: MyRequestsComponent },
+  { path: "approver", component: ApproverComponent },
   { 
     path: 'account', 
     component:AccountComponent,

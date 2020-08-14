@@ -35,7 +35,7 @@
             </ul>
           </li> -->
           <li><a href="#contact">Contact</a></li>
-          <li><a [routerLink] = "['admin']" href="#">Admin</a></li>
+          <li><a [routerLink] = "['approver']" href="#">Admin</a></li>
 
           <li><a *ngIf="!loginService.isLoggedin()" [routerLink] = "['login']" href="#">Login</a></li>
           <li><a *ngIf="loginService.isLoggedin()" (click)='loginService.logoutUser()' href="#">Logout</a></li>

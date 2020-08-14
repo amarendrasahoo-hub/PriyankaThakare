@@ -3,38 +3,38 @@
     <mat-table #table [dataSource]="dataSource" matSort>
       <!-- Position Column -->
       <ng-container matColumnDef="process_type">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Process Type</mat-header-cell>
-        <mat-cell *matCellDef="let apptestlist"> {{apptestlist.process_type}} </mat-cell>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Process Type</th>
+        <td mat-cell *matCellDef="let apptestlist"> {{apptestlist.process_type}} </td>
       </ng-container>
   
       <!-- Weight Column -->
       <ng-container matColumnDef="process_id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Process Id</mat-header-cell>
-        <mat-cell *matCellDef="let apptestlist"> {{apptestlist.process_id}} </mat-cell>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Process Id</th>
+        <td mat-cell *matCellDef="let apptestlist"> {{apptestlist.process_id}} </td>
       </ng-container>
 
       <!-- Requested By Column -->
       <ng-container matColumnDef="req_by">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Requested By</mat-header-cell>
-        <mat-cell *matCellDef="let apptestlist"> {{apptestlist.req_by}} </mat-cell>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Requested By</th>
+        <td mat-cell *matCellDef="let apptestlist"> {{apptestlist.req_by}} </td>
       </ng-container>
 
       <!-- Description Column -->
       <ng-container matColumnDef="description">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
-        <mat-cell *matCellDef="let apptestlist"> {{apptestlist.description}} </mat-cell>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+        <td mat-cell *matCellDef="let apptestlist"> {{apptestlist.description}} </td>
       </ng-container>
   
       <!-- Approvers Comment Column -->
       <ng-container matColumnDef="approver_comments">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Approver Comments</mat-header-cell>
-        <mat-cell *matCellDef="let apptestlist"> {{apptestlist.approver_comments}} </mat-cell>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Approver Comments</th>
+        <td mat-cell *matCellDef="let apptestlist"> {{apptestlist.approver_comments}} </td>
       </ng-container>
   
       <ng-container matColumnDef="expandedDetail">
-        <mat-cell *matCellDef="let apptestlist"> 
+        <td mat-cell *matCellDef="let apptestlist"> 
           The symbol for {{apptestlist.description}} 
-        </mat-cell>
+        </td>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

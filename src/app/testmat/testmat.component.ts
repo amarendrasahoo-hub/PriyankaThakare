@@ -54,7 +54,7 @@ export class AppTestListDataSource extends DataSource<any> {
 
 
 export interface AppTestList {
-  process_type: string;
+    process_type: string;
     process_id: string;
     req_by: string;
     description: string;

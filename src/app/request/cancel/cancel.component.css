@@ -1,15 +1,15 @@
 table {
-    width: 100%;
-  }
+  width: 100%;
+}
 
-  .actions{
-    display: flex;
-    justify-content: center;
-    border: 5px;
-    margin-top: 25px;
-  }
+.actions {
+  display: flex;
+  justify-content: center;
+  border: 5px;
+  margin-top: 25px;
+}
 
-  section{
-    margin-top: 10%;
-    margin-bottom: 3%;
-  }
+section {
+  margin-top: 10%;
+  margin-bottom: 3%;
+}
