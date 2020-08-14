@@ -10,7 +10,7 @@ import { PostResponse } from '../model/post-response';
 })
 export class CreatecrService {
   //private url = 'http://localhost:3000/assets/cr/create';
-  private url = 'http://59.145.135.45:3000/assets/cr/create';
+  private url = 'https://59.145.135.45:3000/assets/cr/create';
   constructor(private http: HttpClient) { }
 
   postCreateCR(createcrobj: CreateCr):  Observable<PostResponse>  {

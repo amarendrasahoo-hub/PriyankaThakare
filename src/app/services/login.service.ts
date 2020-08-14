@@ -25,12 +25,18 @@ export class LoginService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
+<<<<<<< HEAD
   login(username: string, password: string) {
     const userAuthData: Login = { user: username, pass: password };
     return this.http.post<any>(
       "https://59.145.135.45:3000/activeDir/angular_auth",
       userAuthData
     );
+=======
+  login(username: string, password: string){
+    const userAuthData: Login = {user: username, pass: password};
+    return this.http.post<any>('https://59.145.135.45:3000/activeDir/angular_auth', userAuthData);
+>>>>>>> fc5b23223b5813bd03f0e4348adf552fd6f52543
   }
   isLoggedin() {
     return !!localStorage.getItem("token");

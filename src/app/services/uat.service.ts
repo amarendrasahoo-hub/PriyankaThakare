@@ -11,8 +11,8 @@ import { uat } from '../model/uat.model'
 
 
 export class UatService {
-  private fileurl = 'http://59.145.135.45:3000/assets/filetest';
-  private url = 'http://59.145.135.45:3000/assets/uat/create';
+  private fileurl = 'https://59.145.135.45:3000/assets/filetest';
+  private url = 'https://59.145.135.45:3000/assets/uat/create';
   constructor(private http : HttpClient) { }
 
   postUat(uatObject : uat): Observable<PostResponse>{

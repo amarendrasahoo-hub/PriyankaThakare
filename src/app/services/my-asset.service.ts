@@ -14,9 +14,9 @@ import { PostResponse } from '../model/post-response';
 
 export class MyAssetService {
 
-  private url = 'http://59.145.135.45:3000/assetDet/angular_myasset1';
+  private url = 'https://59.145.135.45:3000/assetDet/angular_myasset1';
   // private urlpost = 'http://nodefilemanagement-env.eba-md56muk4.ap-south-1.elasticbeanstalk.com/assets/hardsoft/create';
-  private urlpost = 'http://59.145.135.45:3000/assets/hardsoft/create';
+  private urlpost = 'https://59.145.135.45:3000/assets/hardsoft/create';
   public abc = [];
   myassetnormal: any;
   constructor(private http: HttpClient) { }
