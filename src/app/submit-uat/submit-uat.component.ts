@@ -184,27 +184,31 @@ export class SubmitUatComponent implements OnInit {
         raisedOn: this.uatForm.value.raisedOn,
         reason: this.uatForm.value.failurereason,
         action: this.uatForm.value.actiontobetaken,
-        file: fd,
+        //file: fd,
         reqDate: date,
         reqTime: date.toLocaleTimeString(),
         department: "B&T",
       };
 
-      this.uatservice.postUat(uat).subscribe(
-        (data: PostResponse) => {
-          const resData = data;
-          console.log("success:", resData);
-          this.respMessage =
-            "Request submiited Successfully. Your request Id : " +
-            resData.reqNo +
-            " & Workflow Id : " +
-            resData.workflowId;
-        },
-        (error: any) => {
-          console.log("on error : ", error);
-          this.respMessage = "Error: " + error.statusText + error.message;
-        }
-      );
+      //fd.append('uatNo', '3875484589');
+      //console.log(fd.get('uatNo'), fd.get('file'));
+
+      this.uatservice.postUat(uat, fd)
+      // .subscribe(
+      //   (data: PostResponse) => {
+      //     const resData = data;
+      //     console.log("success:", resData);
+      //     this.respMessage =
+      //       "Request submiited Successfully. Your request Id : " +
+      //       resData.reqNo +
+      //       " & Workflow Id : " +
+      //       resData.workflowId;
+      //   },
+      //   (error: any) => {
+      //     console.log("on error : ", error);
+      //     this.respMessage = "Error: " + error.statusText + error.message;
+      //   }
+      // );
     }
 
     // this.uatservice.postFile(fd)
